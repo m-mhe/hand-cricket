@@ -173,7 +173,7 @@ def submit():
 #body
 #title image and ai image
 img_l=Label(root,font=("bold", 30), text='CRICKET', bg="green").grid(row=1,column=0,columnspan=4, pady=(30,0), padx=(342,342))
-ai_l=Label(root, text="AI", bg="green",font=("bold",18)).grid(row=2,column=0,columnspan=4, pady=(40,0), padx=(342,342))
+ai_l=Label(root, text="COMPUTER", bg="green",font=("bold",18), justify=CENTER).grid(row=2,column=0,columnspan=4, pady=(40,0), padx=(342,342))
 #ai input box
 ai_e=Entry(root, bg="black", font=("bold", 16), fg='green', width=30, justify=CENTER)
 ai_e.grid(row=3,column=0,columnspan=4, pady=(10,0), padx=(0,0), ipady=10)
