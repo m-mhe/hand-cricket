@@ -44,6 +44,10 @@ def submit():
         ai_e.insert(0, value)
 
         if int(totalover)==int(totalball):
+            global scores
+            global terget
+            scores =s_box.get()
+            tergets = t_box.get()
             BALL.delete(0, END)
             BALL.insert(0, int(1))
             out=str(inings.get())+"OUT"
@@ -54,22 +58,22 @@ def submit():
             t_box.delete(0,END)
             t_box.insert(0,target)
             s_box.delete(0,END)
+            s_box.insert(0, 0)
 
         if int(hit) == int(ai_e.get()):
+            scores =s_box.get()
+            tergets = t_box.get()
             BALL.delete(0, END)
             BALL.insert(0, int(0))
             out=str(inings.get())+"OUT"
             inings.delete(0,END)
             inings.insert(0, out)
             s_box.insert(0, 0)
-            global scores
-            global tergets
-            scores =s_box.get()
-            tergets = t_box.get()
             target=(int(s_box.get())+1)
             t_box.delete(0,END)
             t_box.insert(0,target)
             s_box.delete(0,END)
+            s_box.insert(0, 0)
 
         if str(inings.get()) == "OUTOUT":
             win_by = (((int(tergets))-1) - (int(scores)))
@@ -126,16 +130,16 @@ def submit():
                 s_box.insert(0, score)
                 if str(t_box.get()) != "" and str(s_box.get()) != "":
                     if int(s_box.get()) >= int(t_box.get()):
-                        scores =s_box.get()
+                        scoress =s_box.get()
                         terget = t_box.get()
-                        win_by = (int(scores)) - (int(terget))
+                        win_by = (int(scoress)) - (int(terget))
                         s_box.delete(0,END)
                         t_box.delete(0, END)
                         t_box.insert(0, "You Lose!")
                         s_box.insert(0, "You Lose!")
                         ai_e.insert(0, "You Lose!")
                         u_e.insert(0, "You Lose!")
-                        box3=messagebox.askquestion("You Lose", '\nopposition score= '+ str(score) +'\nDo you want to start a new game?')
+                        box3=messagebox.askquestion("You Lose", '\nopposition score= '+ str(scoress) +'\nDo you want to start a new game?')
                         if box3 == 'yes':
                             ai_e.delete(0,END)
                             u_e.delete(0,END)
@@ -158,7 +162,7 @@ def submit():
 
 
 
-
+    
 
 
     else:
@@ -173,7 +177,7 @@ def submit():
 #body
 #title image and ai image
 img_l=Label(root,font=("bold", 30), text='CRICKET', bg="green").grid(row=1,column=0,columnspan=4, pady=(30,0), padx=(342,342))
-ai_l=Label(root, text="COMPUTER", bg="green",font=("bold",18), justify=CENTER).grid(row=2,column=0,columnspan=4, pady=(40,0), padx=(342,342))
+ai_l=Label(root, text="COMPUTER", bg="green",font=("bold",18)).grid(row=2,column=0,columnspan=4, pady=(40,0), padx=(342,342))
 #ai input box
 ai_e=Entry(root, bg="black", font=("bold", 16), fg='green', width=30, justify=CENTER)
 ai_e.grid(row=3,column=0,columnspan=4, pady=(10,0), padx=(0,0), ipady=10)
@@ -195,3 +199,4 @@ BALLBUTTON=Button(root,text="TOTAL BALL", font = "bold", bg='green', fg='black',
 
 #runing mainloop
 root.mainloop()
+
